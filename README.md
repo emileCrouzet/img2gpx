@@ -1,6 +1,6 @@
 # img2gpx
 
-Cherche toutes les photos près d'un GPX pour générer un diaporama.
+Cherche toutes les photos près d'un GPX pour générer un diaporama vidéo en mp4.
 
 Chemin vers le dossier contenant les photos défini dans .env
 
