@@ -5,7 +5,6 @@
 # pip install geopandas
 # pip install osmx
 
-
 import os
 from PIL import Image, ImageDraw, ImageFont
 from PIL.ExifTags import TAGS, GPSTAGS
@@ -28,15 +27,17 @@ locale.setlocale(locale.LC_TIME, 'fr_FR')
 
 os.system('clear')
 
+script_dir = os.path.dirname(script_path) + os.sep
 images_folder = os.path.expanduser(os.environ["IMG_FOLER"])
-gpx_path = "assets/i727-00.gpx"
-first_img = "assets/727uneDiaporama.png"
-output_folder = "output/"
+gpx_path = f"{script_dir}assets/i727-00.gpx"
+first_img = f"{script_dir}assets/727uneDiaporama.png"
+output_folder = f"{script_dir}output/"
 font_folder = "/System/Library/Fonts/"
-audio_file = "assets/DjGrig.mp3"
+audio_file = f"{script_dir}assets/DjGrig.mp3"
 distance_filter = 100 #Ignorer image plus loin de la trace
 
-# Initit exif cache
+
+# Initit cache
 def init_cache():
     global cache, cache_file
 
@@ -47,6 +48,7 @@ def init_cache():
             cache = pickle.load(fichier_cache)
     else:
         cache = {}
+
 
 def save_cache():
     global cache, cache_file
@@ -165,7 +167,7 @@ def get_decimal_coords(geotags):
     return (lat, lon)
 
 
-# Fonction pour convertir les coordonnées GPS en coordonnées de l'image
+# Convertir les coordonnées GPS en coordonnées de l'image
 def gps_to_image_coords(lat, lon, frame, image_size):
     x = (lon - frame['min_lon']) / (frame['max_lon'] - frame['min_lon']) * (image_size[0] - 1)
     y = (1 - (lat - frame['min_lat']) / (frame['max_lat'] - frame['min_lat'])) * (image_size[1] - 1)
@@ -314,16 +316,14 @@ shadow = "black"
 img_trace = output_folder+"trace.png"
 
 create_gpx_trace_image_segment(gpx, taille_cible, color, frame, img_trace)
-text_position = (10, 10)
 
+text_position = (10, 10)
 padding = 10
-#shadow_position = (12, 12)
 
 clips = []
 duree_image = 1.25
 rayon_du_point = 30
 font = ImageFont.truetype(font_folder+"Geneva.ttf", 40)
-
 
 width, height = taille_cible
 duration = 0
