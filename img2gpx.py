@@ -28,12 +28,13 @@ locale.setlocale(locale.LC_TIME, 'fr_FR')
 os.system('clear')
 
 script_dir = os.path.dirname(script_path) + os.sep
+assets = f"{script_dir}assets" + os.sep
 images_folder = os.path.expanduser(os.environ["IMG_FOLER"])
-gpx_path = f"{script_dir}assets/i727-00.gpx"
-first_img = f"{script_dir}assets/727uneDiaporama.png"
+gpx_path = f"{assets}i727-00.gpx"
+first_img = f"{assets}727uneDiaporama.png"
+audio_file = f"{assets}DjGrig.mp3"
 output_folder = f"{script_dir}output/"
 font_folder = "/System/Library/Fonts/"
-audio_file = f"{script_dir}assets/DjGrig.mp3"
 distance_filter = 100 #Ignorer image plus loin de la trace
 
 
