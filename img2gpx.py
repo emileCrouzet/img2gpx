@@ -27,7 +27,7 @@ locale.setlocale(locale.LC_TIME, 'fr_FR')
 
 os.system('clear')
 
-script_dir = os.path.dirname(script_path) + os.sep
+script_dir = os.path.dirname(os.path.abspath(__file__)) + os.sep
 assets = f"{script_dir}assets" + os.sep
 images_folder = os.path.expanduser(os.environ["IMG_FOLER"])
 gpx_path = f"{assets}i727-00.gpx"
